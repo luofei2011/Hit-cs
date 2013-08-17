@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>哈尔滨工业大学计算机学院群众路线实验性计划</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <script type="text/javascript" src="./js/config.js"></script>
 </head>
 <body>
 <div id="container">
@@ -25,60 +26,57 @@
                 <option value="">计算机学院学院办公室人员</option>
                 <option value="">其他</option>
             </select>
-            <div class="person-container">
-                <div class="signal-person">
-                    <img class="photo" src="./img/photo.png" alt="" />
-                    <p class="name">张地</p>
-                    <p class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>
-                    <p class="supports">已经有
-                    <span class="sup-num">XXX</span>
-                        人提出建议
-                    </p>
-                    <input type="button" value="提建议" class="give-sug">
-                </div>
-                <div class="signal-person">
-                    <img class="photo" src="./img/photo.png" alt="" />
-                    <p class="name">张地</p>
-                    <p class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>
-                    <p class="supports">已经有
-                    <span class="sup-num">XXX</span>
-                        人提出建议
-                    </p>
-                    <input type="button" value="提建议" class="give-sug">
-                </div>
-                <div class="signal-person">
-                    <img class="photo" src="./img/photo.png" alt="" />
-                    <p class="name">张地</p>
-                    <p class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>
-                    <p class="supports">已经有
-                    <span class="sup-num">XXX</span>
-                        人提出建议
-                    </p>
-                    <input type="button" value="提建议" class="give-sug">
-                </div>
-                <div class="signal-person">
-                    <img class="photo" src="./img/photo.png" alt="" />
-                    <p class="name">张地</p>
-                    <p class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>
-                    <p class="supports">已经有
-                    <span class="sup-num">XXX</span>
-                        人提出建议
-                    </p>
-                    <input type="button" value="提建议" class="give-sug">
-                </div>
-                <div class="signal-person">
-                    <img class="photo" src="./img/photo.png" alt="" />
-                    <p class="name">张地</p>
-                    <p class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>
-                    <p class="supports">已经有
-                    <span class="sup-num">XXX</span>
-                        人提出建议
-                    </p>
-                    <input type="button" value="提建议" class="give-sug">
-                </div>
+            <div class="person-container clearfix" id="addItem">
+            </div>
+            <div class="leave-a-advice">
+                <input type="text" />
+                <input type="text" placeholder="您的姓名" style="display: inline-block;"> <span class="mention">(选填，希望留下您的真名，对我们的工作很有帮助!)</span>
+                <textarea id="" name="">请在此处填写你的意见和建议
+                </textarea>
+                <input type="button" value="确认，发送！" id="send">
             </div>
         </div>
     </div>
 </div>
+
+<div id="footer">
+    <p>
+Copyright&copy;2011哈尔滨工业大学计算机学院.地址：中国哈尔滨市西大直街92号电话：0451-86413309 传真：0451-86403260 EMAIL：csoffice@hit.edu.cn
+Addr.:92 West Da Zhi St. Harbin China, Tel:0451-86413309, Fax: 0451-86403260, P.C: 150001
+    </p>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        updateDisplay();
+    };
+
+    function updateDisplay() {
+        var container = document.getElementById("addItem"),
+            str = "";
+
+        for(var i = 0; i < 5; i++) {
+            str += createPersonMsg();
+        }
+
+        container.innerHTML = str;
+
+    }
+
+    function createPersonMsg() {
+        var str = '<div class="signal-person">' +
+            '<img class="photo" src="./img/photo.png" alt="" />' +
+            '<p class="name">张地</p>' +
+            '<p' +
+            'class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>'+
+            '<p class="supports">已经有' +
+            '<span class="sup-num">XXX</span>' +
+                '人提出建议' +
+            '</p>' +
+            '<input type="button" value="提建议" class="give-sug">' +
+        '</div>';
+
+        return str;
+    }
+</script>
 </body>
 </html>
