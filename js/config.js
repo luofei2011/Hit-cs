@@ -1,68 +1,113 @@
 var data = {
     "students": [
-        "张迪": {
+        {
+            "name": "张迪", 
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name":"张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         }
     ],
     "academy": [
-        "张迪": {
+        {
+            "name": "小慧", 
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name":"张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         }
     ],
     "other": [
-        "张迪": {
+        {
+            "name": "带动", 
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "带东",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name": "张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         },
-        "张迪": {
+        {
+            "name":"张迪",
+            "email": "hit@hit.edu.cn",
             "position": ["计算机学院博士生协力员","计算机学院团委书记"],
-            "suggest-num": 89
+            "suggest-num": 89,
+            "isSuggested": false
         }
     ]
-}
+};

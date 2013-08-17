@@ -21,18 +21,17 @@
     <div class="main">
         <div class="inner-wrapper">
             <h2>请选择要评价的人员类别:</h2>
-            <select id="" name="">
-                <option value="">计算机学生工作办公室人员</option>
-                <option value="">计算机学院学院办公室人员</option>
-                <option value="">其他</option>
+            <select id="select" name="sort">
+                <option value="students">计算机学生工作办公室人员</option>
+                <option value="academy">计算机学院学院办公室人员</option>
+                <option value="other">其他</option>
             </select>
             <div class="person-container clearfix" id="addItem">
             </div>
             <div class="leave-a-advice">
-                <input type="text" />
-                <input type="text" placeholder="您的姓名" style="display: inline-block;"> <span class="mention">(选填，希望留下您的真名，对我们的工作很有帮助!)</span>
-                <textarea id="" name="">请在此处填写你的意见和建议
-                </textarea>
+                <input type="text" id="to" disabled email="">
+                <input type="text" placeholder="您的姓名" style="display: inline-block;" id="sender"> <span class="mention">(选填，希望留下您的真名，对我们的工作很有帮助!)</span>
+                <textarea id="txt" name="txt">请在此处填写你的意见和建议</textarea>
                 <input type="button" value="确认，发送！" id="send">
             </div>
         </div>
@@ -46,33 +45,117 @@ Addr.:92 West Da Zhi St. Harbin China, Tel:0451-86413309, Fax: 0451-86403260, P.
     </p>
 </div>
 <script type="text/javascript">
-    window.onload = function() {
-        updateDisplay();
+    var select = document.getElementById("select"),
+        container = document.getElementById("addItem"),
+        to = document.getElementById("to"),
+        txt = document.getElementById("txt"),
+        send = document.getElementById("send"),
+        sender = document.getElementById("sender"),
+        current; // 当前正在提意见的对象
+
+    txt.onfocus = function() {
+        if (this.value === "请在此处填写你的意见和建议") {
+            this.value = "";
+        }
+    }
+
+    txt.onblur = function() {
+        if (this.value == "") {
+            this.value = "请在此处填写你的意见和建议";
+        }
+    }
+
+    // 当发送按钮点击后:
+    send.onclick = function() {
+        if (to.value == "") {
+            alert("请先选择提意见的人!");
+            return;
+        }
+        if (txt.value == "请在此处填写你的意见和建议" || txt.value == "") {
+            alert("建议内容不能为空!");
+            return;
+        }
+
+        for (var item in data) {
+            for (var i = 0; i < data[item].length; i++) {
+                if (data[item][i]['email'] == to.getAttribute('email')) {
+                    if (data[item][i]['isSuggested']) {
+                        alert("已经对他提交建议啦,换一个人吧!");
+                        return;
+                    }
+                    data[item][i]['isSuggested'] = true;
+                    data[item][i]['suggest-num'] += 1;
+                    this.style.cursor = "default";
+                    break;
+                }
+            }
+        }
+
+        // 发送的数据,json格式.到时候改的时候加一个发送地址即可!
+        var str = "{" +
+            '"email": "'+to.getAttribute("email")+'",' +
+            '"senderName": "'+ sender.value +'",' +
+            '"content": "'+ txt.value +'"'
+            "}";
+
+        // 上面是一个异步的过程, 当点击发生以后动态改变建议人数并把按钮变灰
+        if (current) {
+            current.innerHTML = current.innerHTML * 1 + 1 + ''; 
+        }
+
+        txt.value = "";
+    };
+        
+
+    select.onchange = function() {
+        updateDisplay(select.value);
     };
 
-    function updateDisplay() {
-        var container = document.getElementById("addItem"),
+    container.onclick = function(e) {
+        e = window.event || e;
+        var target = e.srcElement ? e.srcElement : e.target;
+
+        if (target.nodeName.toUpperCase() == "INPUT") {
+            to.value = "To: " + target.getAttribute("to");
+            to.setAttribute("email", target.getAttribute("email"));
+            current = target.parentNode.getElementsByTagName('span')[0];
+        }
+    }
+
+    updateDisplay('students');
+
+    function updateDisplay(item) {
+        var arr = data[item],
+            len = arr.length,
             str = "";
 
-        for(var i = 0; i < 5; i++) {
-            str += createPersonMsg();
+        for(var i = 0; i < len; i++) {
+            str += createPersonMsg(arr[i]);
         }
 
         container.innerHTML = str;
-
     }
 
-    function createPersonMsg() {
+    function createPersonMsg(obj) {
         var str = '<div class="signal-person">' +
             '<img class="photo" src="./img/photo.png" alt="" />' +
-            '<p class="name">张地</p>' +
-            '<p' +
-            'class="position">代理费打算第三方第三届反垄断算法打算范德萨骆飞第三方打算</p>'+
-            '<p class="supports">已经有' +
-            '<span class="sup-num">XXX</span>' +
+            '<p class="name">'+obj.name+'</p>';
+
+        for (var i = 0; i < obj.position.length; i++) {
+            str += '<p' + ' class="position">'+obj.position[i]+'</p>';
+        }
+
+        str += '<p class="supports">已经有' +
+            '<span class="sup-num">'+obj['suggest-num']+'</span>' +
                 '人提出建议' +
             '</p>' +
-            '<input type="button" value="提建议" class="give-sug">' +
+            '<input type="button" value="提建议"'+
+            ' class="give-sug';
+        
+        if (obj.isSuggested)
+            str += " suggested";
+
+        str += '" to="'+obj.name+'" email="'+obj.email+'">' +
         '</div>';
 
         return str;
